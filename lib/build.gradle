@@ -37,6 +37,12 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'com.getkeepsafe.relinker:relinker:1.4.5'
+    }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
