@@ -18,9 +18,10 @@ jobs:
         distribution: 'zulu'
         java-version: '8'
 
-    - name: Install Android NDK
+    - name: Install NDK and Accept Licenses
       run: |
-        echo "y" | sudo ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --install "ndk;21.4.7075529"
+        yes | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --licenses || true
+        ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "ndk;21.4.7075529"
         echo "ndk.dir=${ANDROID_SDK_ROOT}/ndk/21.4.7075529" >> local.properties
 
     - name: Grant execute permission for gradlew
